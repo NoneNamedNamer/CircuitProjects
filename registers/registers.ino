@@ -2,6 +2,7 @@
 int latchPin = 8; // Пин, подключенный к ST_CP (RCLK) регистра сдвига
 int clockPin = 12; // Пин, подключенный к SH_CP (SRCLK) регистра сдвига
 int dataPin = 11; // Пин, подключенный к DS (DATA) регистра сдвига
+
 void setup() {
 // Настраиваем пины микроконтроллера как выходы
 pinMode(latchPin, OUTPUT);
@@ -23,10 +24,9 @@ digitalWrite(latchPin, LOW);
 // Отправляем биты в регистр сдвига
 shiftOut(dataPin, clockPin, LSBFIRST, numberToDisplay);
 // Поднимаем latchPin после передачи данных для активации выходов регистра
-//сдвига
+// сдвига
 digitalWrite(latchPin, HIGH);
 // Задержка между обновлениями светодиодов
 delay(1000);
 }
-exit(0);
 }
